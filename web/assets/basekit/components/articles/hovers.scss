@@ -1,0 +1,41 @@
+.shadow-hover {
+  transition: box-shadow 0.2s ease-in-out;
+  &:hover{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.zoom-hover {
+    img{
+      transition: transform 0.2s ease-in-out;
+    }
+    &:hover {
+      img {
+        transform: scale(1.07);
+      }
+    }
+}
+
+.cta-hover{
+  .cta-holder{
+    opacity:0;
+    transition: opacity 0.3s;
+  }
+  &:hover {
+    .cta-holder{
+      opacity:1;
+    }
+  }
+}
+
+.blur-hover,
+.blur-hover.seen {
+  img{
+    transition: filter .3s ease-in-out;
+  }
+  &:hover {
+    img {
+      filter: blur(4px);
+    }
+  }
+}

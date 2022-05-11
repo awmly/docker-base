@@ -1,0 +1,12 @@
+picture{
+  img{
+    transition: opacity 0.3s;
+  }
+}
+picture.delay,
+picture.fade,
+picture.scroll{
+  img{
+    opacity:0;
+  }
+}

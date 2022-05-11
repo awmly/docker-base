@@ -1,0 +1,18 @@
+.site{
+    width:100%;
+    min-height:101vh; /* prevents layout jump when scrollbar loads - this way there is always a scrollbar */
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  
+  main{
+    position:relative;
+    z-index:20;
+    padding-bottom: theme('spacing.lg');
+  }
+  
+  .no-pad main{
+    padding-bottom:0;
+  }

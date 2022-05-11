@@ -1,0 +1,14 @@
+.scroll-unblur{
+
+    img{
+        transition:filter 1s;
+        filter: blur(8px);
+    }
+
+    &.seen{
+        img{
+            filter: blur(0);
+        } 
+    }
+
+}

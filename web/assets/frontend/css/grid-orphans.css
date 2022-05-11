@@ -1,0 +1,120 @@
+/*
+XS 1
+SM 3
+MD 3
+LG 4
+*/
+@screen sm{
+    .sm\:grid-cols-6.align-center{
+        &.sm\:orph-1{
+            article:nth-last-child(1) {
+               @apply col-start-3;
+            }
+        }
+        &.sm\:orph-2{
+            article:nth-last-child(2) {
+               @apply col-start-2;
+            }
+        }
+    }
+}
+
+@screen lg{
+    .lg\:grid-cols-6.align-center{
+        &.lg\:orph-1{
+            article:nth-last-child(1) {
+               @apply col-start-3;
+            }
+            article:nth-last-child(2) {
+                grid-column-start: auto;
+            }
+        }
+        &.lg\:orph-2{
+            article:nth-last-child(2) {
+               @apply col-start-2;
+            }
+            article:nth-last-child(1) {
+                grid-column-start: auto;
+            }
+        }
+    }
+}
+
+@screen xl{
+    .xl\:grid-cols-8.align-center{
+        &.xl\:orph-1{
+            article:nth-last-child(1) {
+               @apply col-start-4;
+            }
+            article:nth-last-child(2),
+            article:nth-last-child(3) {
+                grid-column-start: auto;
+            }
+        }
+        &.xl\:orph-2{
+            article:nth-last-child(2) {
+               @apply col-start-3;
+            }
+            article:nth-last-child(1),
+            article:nth-last-child(3) {
+                grid-column-start: auto;
+            }
+        }
+        &.xl\:orph-3{
+            article:nth-last-child(3) {
+               @apply col-start-2;
+            }
+            article:nth-last-child(2),
+            article:nth-last-child(1) {
+                grid-column-start: auto;
+            }
+        }
+    }
+}
+
+/*
+XS 1
+SM 2
+MD 2
+LG 3
+*/
+@screen sm{
+    .sm\:grid-cols-4.align-center{
+        &.sm\:orph-1{
+            article:nth-last-child(1) {
+               @apply col-start-2;
+            }
+        }
+    }
+}
+
+@screen lg{
+    .lg\:grid-cols-4.align-center{
+        &.lg\:orph-1{
+            article:nth-last-child(1) {
+               @apply col-start-2;
+            }
+        }
+    }
+}
+
+@screen xl{
+    .xl\:grid-cols-6.align-center{
+        &.xl\:orph-1{
+            article:nth-last-child(1) {
+               @apply col-start-3;
+            }
+            article:nth-last-child(2) {
+                grid-column-start: auto;
+            }
+        }
+        &.xl\:orph-2{
+            article:nth-last-child(2) {
+               @apply col-start-2;
+            }
+            article:nth-last-child(1) {
+                grid-column-start: auto;
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "base",
+  "version": "6.2.0",
+  "author": "Applied Digital",
+  "scripts": {
+    "critical": "node critical.js"
+  },
+  "dependencies": {
+    "critical": "^4.0.1"
+  }
+}

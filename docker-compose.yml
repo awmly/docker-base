@@ -1,0 +1,88 @@
+# use version 3 of the docker compose syntax
+version: '3'
+
+services:
+
+  # we named our first service 'web'
+  web:
+    # pass a hostname to the container (optinal)
+    hostname: base
+
+    # a name for easier reference
+    image: apld/base-web:2.0
+
+    # map host port 8080 to container port 80
+    ports:
+        - 5000:80
+
+    # volumes are like shared folders
+    # container will see your local code changes
+    volumes:
+      - ./web:/web:cached
+      - ./runner:/runner
+      - ./firebase:/firebase
+
+    # first load the 'db' service
+    depends_on:
+      - database
+      - build
+
+    # make 'db' a known service/host inside of 'web'
+    # use this to make a mysql connection to host 'db'
+    links:
+      - database
+      - build
+
+  database:
+
+    # use a default image
+    image: apld/base-database:1.0
+
+    env_file:
+      - ./web/environments/server.env
+      - ./web/environments/core.env
+      - ./web/environments/local.env
+
+    volumes:
+      - ./database:/database
+
+    ports:
+      - 13306:3306
+
+  build:
+
+    image: apld/base-build:3.0
+
+    environment:
+      - LOGNAME=$LOGNAME
+
+    env_file:
+      - ./web/environments/server.env
+      - ./web/environments/core.env
+      - ./web/environments/local.env
+
+    volumes:
+      - ./build:/build
+      - /build/node_modules
+      - ./web:/web
+      - ./database:/database
+      - ./runner:/runner
+      - ./firebase:/firebase
+      - ./shopify:/shopify
+
+    ports:
+        - 11337:1337
+
+  phpmyadmin:
+
+    image: phpmyadmin/phpmyadmin:latest
+
+    links:
+      - database
+
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+
+    ports:
+      - '5002:80'

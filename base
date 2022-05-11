@@ -1,0 +1,92 @@
+#! /bin/bash
+
+METHOD="$1"
+ARGS=("$@")
+shift;
+COMMAND=$@
+
+source web/environments/core.env
+export PRODUCTION_PROTOCOL
+export PRODUCTION_DOMAIN
+
+if [ "$METHOD" = "up" ]; then
+
+  docker pull apld/base-web:2.0
+  docker pull apld/base-database:1.0
+  docker pull apld/base-build:2.0
+
+  chmod -R 0777 web/uploads
+  chmod -R 0777 runner/tmp
+
+  docker-compose -f docker-compose.yml up
+
+elif [ "$METHOD" = "sync" ]; then
+
+  git pull --rebase
+
+  base db synclocal
+
+  base build
+
+elif [ "$METHOD" = "stop" ]; then
+
+  docker stop $(docker ps -a -q)
+
+elif [ "$METHOD" = "install" ]; then
+
+  base db install
+
+  echo "COMPLETE"
+
+elif [ "$METHOD" = "script" ]; then
+
+  docker-compose exec web php /web/cli /script/$1 $2
+
+  echo "COMPLETE"
+
+elif [ "$METHOD" = "reset" ]; then
+
+  docker-compose rm $1
+
+  echo "COMPLETE"
+
+elif [ "$METHOD" = "ssh" ]; then
+
+  docker-compose exec $1 bash
+
+elif [ "$METHOD" = "build" ]; then
+
+  if [ "$1" != "" ]; then
+    docker-compose exec build bash /build/$1
+  else
+    docker-compose exec build bash /build/all
+  fi
+
+elif [ "$METHOD" = "firebase" ]; then
+
+  docker-compose exec build bash /build/firebase
+
+elif [ "$METHOD" = "db" ]; then
+
+  docker-compose exec database bash /database/$1
+
+  echo "COMPLETE"
+
+elif [ "$METHOD" = "tag" ]; then
+
+  BUILD=$(cat .build)
+
+  echo $((BUILD+1)) > .build
+
+  echo "Tagging build $BUILD"
+
+  git add .build
+  git commit -m "Deploying Build $BUILD"
+
+  git tag -a build-$BUILD -m "Build $BUILD"
+  git push origin build-$BUILD
+  git push origin master
+
+  echo "COMPLETE"
+
+fi

@@ -1,0 +1,268 @@
+/*  /*  Buttons */
+/*  $round: true; */
+/*  $shadows: false; */
+/*  $upper: false; */
+
+/*  .btn { */
+
+/*    display: inline-block; */
+/*    position: relative; */
+/*    font-weight: 600; */
+/*    text-align: center; */
+/*    white-space: wrap; */
+/*    vertical-align: middle; */
+/*    -webkit-user-select: none; */
+/*    -moz-user-select: none; */
+/*    -ms-user-select: none; */
+/*    user-select: none; */
+/*    padding: .8rem 1.4rem; */
+/*    font-size:1.1rem; */
+/*    line-height: $line-md; */
+/*    border: 1px solid transparent; */
+/*    border-radius:0; */
+/*    transition: all .3s ease-in-out; */
+/*    cursor: pointer; */
+/*    text-decoration: none; */
+/*    display: inline-flex; */
+/*    justify-content: center; */
+/*    align-items: center; */
+/*    overflow:hidden; */
+
+/*    @if $round { */
+/*      padding: .8rem 1.3rem; */
+/*      border-radius: 5rem; */
+/*    } */
+
+/*    @if $upper { */
+/*      text-transform:uppercase; */
+/*    } */
+
+/*    &:focus, &:hover { */
+/*      text-decoration: none; */
+/*    } */
+
+/*    &:focus { */
+/*      outline: 0; */
+/*    } */
+
+/*    @if $shadows { */
+/*      &:not(.btn-blank) { */
+/*        &:hover:after { */
+/*          box-shadow: inset 0 -2px rgba(0,0,0,.25); */
+/*          @if $round { */
+/*            border-radius: 5rem; */
+/*          } */
+/*        } */
+/*        &:active:after { */
+/*          box-shadow: inset 0 3px 5px rgba(0,0,0,.125); */
+/*          @if $round { */
+/*            border-radius: 5rem; */
+/*          } */
+/*        } */
+/*      } */
+/*    } */
+
+/*    i{ */
+/*    	line-height:$line-md; */
+/*    	font-size:24px; */
+/*    	max-height:19px; */
+/*      vertical-align: middle; */
+/*      display: inline-flex; */
+/*      vertical-align: middle; */
+/*      align-itrems: center; */
+/*    } */
+
+/*    span{ */
+/*      -webkit-transition: all 0.3s; */
+/*    	-moz-transition: all 0.3s; */
+/*    	-o-transition: all 0.3s; */
+/*    	transition: all 0.3s; */
+/*      z-index:100; */
+/*      &:before{ */
+/*        content:""; */
+/*        opacity:0; */
+/*        transition: opacity 0.3s; */
+/*        position:absolute; */
+/*        top:0; */
+/*        left:0; */
+/*        width:100%; */
+/*        height:100%; */
+/*        background:rgba(0,0,0,0.7); */
+/*      } */
+/*      &:after{ */
+/*        @extend .material-icons; */
+/*        content: "autorenew"; */
+/*        text-transform: lowercase; */
+/*        color:#eee; */
+/*        font-size:30px; */
+/*        opacity:0; */
+/*        transition: opacity 0.3s; */
+/*        position:absolute; */
+/*        left:50%; */
+/*        top:50%; */
+/*        line-height:40px; */
+/*        text-align:center; */
+/*        width:30px; */
+/*        height:40px; */
+/*        margin:-20px 0 0 -15px; */
+/*        animation-name: spin; */
+/*        animation-duration: 1000ms; */
+/*        animation-iteration-count: infinite; */
+/*        animation-timing-function: linear; */
+/*      } */
+/*    } */
+
+/*    .form-submitting & { */
+/*      span{ */
+/*        &:before, &:after{ */
+/*          opacity:1; */
+/*        } */
+/*      } */
+/*    } */
+
+/*    .icon { */
+/*      width:20px; */
+/*      height:10px; */
+
+/*      &.primary { */
+/*        fill:$primary; */
+/*      } */
+/*      &.black { */
+/*        fill:$black; */
+/*      } */
+/*      &.secondary { */
+/*        fill:$secondary; */
+/*      } */
+/*    } */
+
+/*    &.icon-left{ */
+/*      @if $round { */
+/*        padding-left: .5rem; */
+/*      } */
+/*      i{ */
+/*        margin-right: $xs; */
+/*      } */
+/*    } */
+
+/*    &.icon-right{ */
+/*      @if $round { */
+/*        padding-right:.3rem; */
+/*      } */
+/*      i{ */
+/*        margin-left: $xs; */
+/*      } */
+/*    } */
+
+/*    &.icon-center{ */
+/*      padding-left: .2rem; */
+/*      padding-right: .2rem; */
+/*      i{ */
+/*      	line-height:0.7rem; */
+/*      	font-size:34px; */
+/*      	max-height:22px; */
+/*      } */
+/*    } */
+
+/*    &.btn-lg { */
+
+/*      @if $round { */
+/*        padding: .8rem 1.6rem; */
+/*        border-radius: 5rem; */
+/*      } @else { */
+/*        padding: .5rem 1rem; */
+/*        border-radius:0; */
+/*      } */
+
+/*      font-size: 1rem; */
+
+/*      i{ */
+/*      	line-height:0.55rem; */
+/*      	font-size:34px; */
+/*      	max-height:23px; */
+/*      } */
+
+/*      &.icon-center{ */
+/*        padding-left: .2rem; */
+/*        padding-right: .2rem; */
+/*        i{ */
+/*          line-height:0.75rem; */
+/*          font-size:38px; */
+/*          max-height:27px; */
+/*        } */
+/*      } */
+
+/*      @if $round { */
+/*        &.icon-left{ */
+/*          padding-left: .35rem; */
+/*        } */
+/*        &.icon-right{ */
+/*          padding-right: .35rem; */
+/*        } */
+/*        &.icon-center{ */
+/*          padding-left: .2rem; */
+/*          padding-right: .2rem; */
+/*        } */
+/*      } */
+/*    } */
+
+/*    &.btn-sm { */
+
+/*      border-radius:0; */
+
+/*      a{font-size: $font-sm !important;} */
+
+/*      @if $round { */
+/*        padding: .6rem 1rem; */
+/*        border-radius: 5rem; */
+/*      } @else { */
+/*        padding: .5rem 1rem; */
+/*        border-radius:0; */
+/*      } */
+
+/*      &:after { */
+/*        border-radius: .2rem; */
+/*      } */
+
+/*      i{ */
+/*      	line-height:0.65rem; */
+/*      	font-size:24px; */
+/*      	max-height:15px; */
+/*      } */
+
+/*      &.icon-center{ */
+/*        i{ */
+/*          line-height:0.95rem; */
+/*          font-size:28px; */
+/*          max-height:27px; */
+/*        } */
+/*      } */
+
+/*      @if $round { */
+/*        &.icon-left{ */
+/*          padding-left: .3rem; */
+/*        } */
+/*        &.icon-right{ */
+/*          padding-right: .3rem; */
+/*        } */
+/*        &.icon-center{ */
+/*          padding-left: .2rem; */
+/*          padding-right: .2rem; */
+/*        } */
+/*      } */
+/*    } */
+
+/*    &.btn-block { */
+/*      width: 100%; */
+/*      display: block; */
+/*    } */
+
+/*    &:disabled, &.disabled { */
+/*      opacity: .65; */
+/*      cursor: not-allowed; */
+/*      &:hover:after, &:focus:after, &:active:after { */
+/*        box-shadow: none; */
+/*      } */
+/*    } */
+
+
+/*  } */

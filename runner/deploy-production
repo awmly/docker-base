@@ -1,0 +1,32 @@
+#! /bin/bash
+
+echo "DEPLOY PRODUCTION"
+
+# CLOUD FILES
+echo "UPLOADING CLOUDFILES"
+
+echo "SERVER=PRODUCTION_RUNNER" > /web/environments/server.env
+php /web/cli /script/cdn-upload
+php /web/cli /script/set-cors
+
+
+# WEB FILES
+export SSHPASS=$PRODUCTION_SERVER_PASS
+
+REMOTE=${PRODUCTION_SERVER_USER}@${PRODUCTION_SERVER_SERVER}:${PRODUCTION_SERVER_PATH}
+
+echo "UPLOADING WEB FILES"
+echo "$REMOTE"
+
+echo "SERVER=PRODUCTION" > /web/environments/server.env
+
+sshpass -e rsync -trp --rsh="ssh -o StrictHostKeyChecking=no" --delete --omit-dir-times /web/assets/ ${REMOTE}/assets/
+sshpass -e rsync -trp --rsh="ssh -o StrictHostKeyChecking=no" --delete --omit-dir-times /web/config/ ${REMOTE}/config/
+sshpass -e rsync -trp --rsh="ssh -o StrictHostKeyChecking=no" --delete --omit-dir-times /web/environments/ ${REMOTE}/environments/
+sshpass -e rsync -trp --rsh="ssh -o StrictHostKeyChecking=no" --delete --omit-dir-times /web/lib/ ${REMOTE}/lib/
+sshpass -e rsync -trp --rsh="ssh -o StrictHostKeyChecking=no" --delete --exclude=cache --omit-dir-times /web/public/ ${REMOTE}/public/
+sshpass -e rsync -trp --rsh="ssh -o StrictHostKeyChecking=no" --omit-dir-times /web/public/cache/ ${REMOTE}/public/cache/
+sshpass -e rsync -trp --rsh="ssh -o StrictHostKeyChecking=no" --delete --omit-dir-times /web/public/cache/views/ ${REMOTE}/public/cache/views/
+
+sshpass -e ssh -o StrictHostKeyChecking=no ${PRODUCTION_SERVER_USER}@${PRODUCTION_SERVER_SERVER} "mkdir -p ${PRODUCTION_SERVER_PATH}/uploads/images"
+sshpass -e ssh -o StrictHostKeyChecking=no ${PRODUCTION_SERVER_USER}@${PRODUCTION_SERVER_SERVER} "mkdir -p ${PRODUCTION_SERVER_PATH}/uploads/files"

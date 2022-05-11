@@ -1,0 +1,19 @@
+{
+	"name": "awmly/base",
+	"config": {
+		"vendor-dir": "/web/lib/vendor"
+	},
+	"require": {
+		"campaignmonitor/createsend-php": "6.1",
+		"phpmailer/phpmailer": "5.2.7",
+		"awmly/openstack": "^3.1.1",
+		"leafo/lessphp": "0.4.0",
+		"mailgun/mailgun-php": "^2.3",
+		"php-http/curl-client": "^1.7",
+		"guzzlehttp/psr7": "^1.4",
+		"drewm/mailchimp-api": "^2.4",
+		"vlucas/phpdotenv": "^4.0.1",
+		"google/cloud-storage": "^1.16.0",
+		"firebase/php-jwt": "^5.0.0"
+	}
+}

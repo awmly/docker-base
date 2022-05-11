@@ -1,0 +1,7 @@
+.mask-black {
+  @include bg-rgba($black, 0.4);
+}
+
+.mask-primary {
+  @include bg-rgba($primary, 0.4);
+}

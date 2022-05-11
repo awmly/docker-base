@@ -1,0 +1,25 @@
+html{
+    @apply font-body;
+    font-size:18px;
+}
+
+/* .weight-light{ @apply font-light; }
+.weight-normal{ @apply font-normal; }
+.weight-bold{ @apply font-bold; } */
+
+.prose{
+
+    blockquote{
+        padding-left:40px;
+        &::before{
+            @apply inline-block absolute left-0 text-h1;
+            content: '\201C'; /* “ */
+            line-height: 0.6;
+        }
+
+        &::after{
+            @apply inline-block absolute text-h1 pl-xs;
+            content: '\201D'; /* ” */
+        }
+    }
+}

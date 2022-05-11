@@ -1,0 +1,10 @@
+#! /bin/bash
+
+# Export database from local server
+bash /database/exportlocal
+echo "LOCAL DATABASE EXPORTED"
+
+
+# Import database in to production server
+bash /database/importproduction
+echo "PRODUCTION DATABASE IMPORTED"

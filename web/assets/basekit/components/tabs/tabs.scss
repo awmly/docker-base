@@ -1,0 +1,43 @@
+/*  ***** */
+/*  CORE LOGIC - DO NOT EDIT - USE FRONTEND MODULES */
+/*  ***** */
+
+.tabs{
+
+  /*  Icons */
+  .icon-on{
+    display: none;
+  }
+
+  .active{
+    .icon-off{
+      display: none;
+    }
+    .icon-on{
+      display: inline-block;
+    }
+  }
+
+  /*  Overlay */
+  &.tabs-normal, &.tabs-accordion{
+
+    .tab-holder{
+
+      display:none;
+
+      &.active{
+        display:block;
+      }
+
+    }
+
+    .active > .tab-holder{
+      display:block;
+    }
+
+  }
+
+  
+
+}
+

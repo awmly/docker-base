@@ -1,0 +1,85 @@
+@layer components{
+
+form{
+  label{
+      /* @apply font-bold; */
+  }
+}
+
+.form-control{
+    /* more examples here https://tailwindcss-forms.vercel.app/ */
+    @apply mt-xxs block w-full rounded-md border-light shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 text-xdark;
+}
+
+.form-group{
+    @apply mb-xs;
+    
+    &.has-error {
+        input,textarea,select {
+            border:solid 1px var(--field-error-colour);
+        }
+        .validation {
+            color: var(--field-error-colour);
+        }
+    }
+
+    &.field-inactive{
+        @apply hidden;
+    }
+}
+
+
+.custom-control {
+    font-weight: normal;
+    text-transform: none;
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    min-height: 1.5rem;
+    padding-left: 30px;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  
+  .custom-control-indicator {
+    position: absolute;
+    top: 0;
+    left: -.1rem;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+    line-height: 0;
+  }
+  
+  .custom-control-input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+  
+  .custom-control-input~.custom-control-indicator i.checked { display:none; }
+  .custom-control-input:checked~.custom-control-indicator i.unchecked { display:none; }
+  .custom-control-input:checked~.custom-control-indicator i.checked { display:block; }
+  .custom-control-input:disabled~.custom-control-indicator i { color: #cccccc; }
+  .custom-control-input:disabled~.custom-control-description { color: #868e96; }
+  
+  i.unchecked {
+    color: var(--custom-input-colour);
+  }
+  i.checked {
+    color: var(--custom-input-colour-checked);
+  }
+  
+  /* change focus-within to :has(:focus-visible) once supported */
+  .custom-radio:focus-within .custom-control-indicator{
+    @apply rounded-full;
+    box-shadow: 0px 0px 0px 2px currentColor;
+  }
+  
+  .custom-checkbox:focus-within .custom-control-indicator{
+    @apply rounded-sm;
+    box-shadow: 0px 0px 0px 2px currentColor;
+  }
+  
+}

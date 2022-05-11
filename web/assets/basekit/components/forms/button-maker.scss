@@ -1,0 +1,62 @@
+/*  @mixin button($name, $color, $background_hover, $color_hover) { */
+
+/*    .btn-#{$name} { */
+
+/*      background-color:var(--color-#{$name}); */
+/*      border-color: var(--color-#{$name}); */
+/*      color: var(--color-#{$color}); */
+
+/*      &:hover, */
+/*      article.hover-btn:hover &, */
+/*      article.force-hover-btn &{ */
+
+/*        background: var(--color-#{$background_hover}); */
+/*        border-color:var(--color-#{$background_hover}); */
+/*        color: var(--color-#{$color_hover}); */
+
+/*      } */
+
+/*      article.no-hover-btn:hover &{ */
+/*        background: var(--color-#{$name}); */
+/*        border-color: var(--color-#{$name}); */
+/*        color: var(--color-#{$color}); */
+/*      } */
+
+/*    } */
+
+/*    .btn-outline-#{$name} { */
+
+/*      background: none; */
+/*      border-color: var(--color-#{$name}); */
+/*      color: var(--color-#{$name}); */
+
+/*      &:hover, */
+/*      article.hover-btn:hover &, */
+/*      article.force-hover-btn &{ */
+
+/*        background: var(--color-#{$name}); */
+/*        border-color: var(--color-#{$name}); */
+/*        color: $color; */
+
+/*      } */
+
+/*      article.no-hover-btn:hover &{ */
+/*        background: none; */
+/*        border-color: var(--color-#{$name}); */
+/*        color: var(--color-#{$name}); */
+/*      } */
+
+/*      &:hover:after { */
+/*        box-shadow: none !important; */
+/*      } */
+
+/*    } */
+/*  } */
+
+/*  @include button('primary', 'primary-contrast', 'secondary', 'secondary_contrast'); */
+/*  @include button('secondary', 'secondary-contrast', 'secondary_dark', 'secondary_contrast'); */
+/*  @include button('tertiary', 'tertiary-contrast', 'tertiary_dark', 'tertiary_contrast'); */
+/*  @include button('body', 'body-contrast', 'body_dark', 'body_contrast'); */
+/*  @include button('xdark', 'xdark-contrast', 'xdark_dark', 'xdark_contrast'); */
+/*  @include button('white', 'white-contrast', 'white_dark', 'secondary'); */
+/*  @include button('blank', 'xdark', 'xlight', 'xdark'); */

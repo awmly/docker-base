@@ -1,0 +1,124 @@
+/*  ***** */
+/*  CORE LOGIC - DO NOT EDIT - USE FRONTEND MODULES */
+/*  ***** */
+
+.panel{
+
+  position:relative;
+
+  .panel-title{
+    position:relative;
+    & .after {
+      content:"";
+      display:block;
+      height:var(--xs);
+    }
+  }
+
+  .panel-icon{
+    display:none;
+  }
+
+  .panel-close{
+    visibility: hidden;
+  }
+
+  &.hide-title-inactive:not(.panel-active):not(.panel-flex){
+    > .panel-title{
+      display:none;
+    }
+  }
+
+  /*  Active - when the collapse functionality is activate for current device */
+  &.panel-active{
+    .panel-icon{
+      display:block;
+    }
+    .panel-title{
+      cursor:pointer;
+    }
+  }
+
+  /*  Opened - when the panel is open */
+  &.panel-opened{
+    z-index:1000;
+    > .panel-title{
+      .panel-close{
+        visibility: visible;
+      }
+      .panel-open{
+        visibility: hidden;
+      }
+    }
+  }
+
+
+  /*  Collapse Logic */
+  &.panel-collapse{
+
+    .panel-content{
+      height:0;
+      overflow:hidden;
+    }
+
+    .panel-inner{
+      position: relative;
+      height: 100%;
+    }
+
+    &.content-over{
+      .panel-inner{
+        overflow: auto;
+      }
+      > .panel-content{
+        position: absolute;
+        left:0;
+        /*  right:0; */
+        top:100%;
+        min-width: 200px;
+        &.panel-right{
+          left:auto;
+          right:0;
+        }
+      }
+    }
+
+  }
+
+
+  /*  Flex Logic */
+  &.panel-flex{
+
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    overflow:hidden;
+
+    .panel-content{
+      width:100%;
+      display: flex;
+      flex: 1 1 auto;
+      overflow:hidden;
+    }
+
+    .panel-inner{
+      width:100%;
+      overflow: auto;
+    }
+
+    &.flex-center{
+
+      .panel-inner{
+        display:flex;
+        align-items: center;
+      }
+
+    }
+
+  }
+
+
+}

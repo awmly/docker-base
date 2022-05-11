@@ -1,0 +1,66 @@
+.visible-xs,
+.visible-sm,
+.visible-md,
+.visible-lg,
+.visible-mobile,
+.visible-desktop{
+  display:none;
+}
+
+.hidden{
+  display: none;
+}
+
+@include xs{
+  .hidden-xs{
+    display:none !important;
+  }
+  .visible-xs{
+    display:block !important;
+  }
+}
+
+@include sm{
+  .hidden-sm{
+    display:none !important;
+  }
+  .visible-sm{
+    display:block !important;
+  }
+}
+
+@include md{
+  .hidden-md{
+    display:none !important;
+  }
+  .visible-md{
+    display:block !important;
+  }
+}
+
+@include lg{
+  .hidden-lg{
+    display:none !important;
+  }
+  .visible-lg{
+    display:block !important;
+  }
+}
+
+@include mobile{
+  .hidden-mobile{
+    display:none !important;
+  }
+  .visible-mobile{
+    display:block !important;
+  }
+}
+
+@include desktop{
+  .hidden-desktop{
+    display:none !important;
+  }
+  .visible-desktop{
+    display:block !important;
+  }
+}

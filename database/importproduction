@@ -1,0 +1,8 @@
+#! /bin/bash
+
+TIMESTAMP=$( date +%s )
+
+/usr/bin/mysql --defaults-extra-file=/database/production.cnf -h $PRODUCTION_MYSQL_HOST $PRODUCTION_MYSQL_DATABASE < /database/database.sql
+
+TOTAL=$( expr $( date +%s ) - $TIMESTAMP)
+echo "PRODUCTION DATABASE IMPORTED IN ${TOTAL} SECONDS"

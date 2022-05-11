@@ -1,0 +1,6 @@
+@font-face{
+    font-display: swap;
+    font-family:"Helvetica Now Text W05 Light";
+    src:url("../../fonts/4f790c27-44c3-4326-88e8-55fec100fbcb.eot?#iefix");
+    src:url("../../fonts/4f790c27-44c3-4326-88e8-55fec100fbcb.eot?#iefix") format("eot"),url("../../fonts/8448bbbb-ba62-45df-ae79-4ded34b0727b.woff2") format("woff2"),url("../../fonts/ad48d569-0df5-4f5d-8ad3-8ce63dd84d7d.woff") format("woff"),url("../../fonts/8898db8e-b398-4eab-8117-8b7a4013635b.ttf") format("truetype");
+}

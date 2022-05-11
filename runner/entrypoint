@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# This is a copy of the entry point used in the runner image
+# If a project needs a custom entry point
+# Update this file with required functionality
+# Then set the entry point for the docker image within .gitlab-ci.yml
+
+# Set and export some vars
+set -a
+. /builds/${CI_PROJECT_PATH}/web/environments/core.env
+set +a
+
+
+# Simulate volume mounts docker-compose would provide
+cp -r /builds/${CI_PROJECT_PATH}/build /build
+cp -r /builds/${CI_PROJECT_PATH}/database /database
+cp -r /builds/${CI_PROJECT_PATH}/runner /runner
+
+# Older projects won't have /firebase dir, so create if not exists to avoid error
+mkdir -p /builds/${CI_PROJECT_PATH}/firebase
+cp -r /builds/${CI_PROJECT_PATH}/firebase /firebase
+
+if [ -d "/builds/${CI_PROJECT_PATH}/dist" ]; then
+  cp -r /builds/${CI_PROJECT_PATH}/dist /web
+else
+  cp -r /builds/${CI_PROJECT_PATH}/web /web
+fi
+
+# Execute command from gitlab
+exec "$@"

@@ -1,0 +1,69 @@
+.expanded-col {
+	margin:0 $md * -1;
+	> [class*="col-"]{
+	padding: 0 $md;
+	}
+}
+
+.condensed-col {
+	margin:0 $xs * -1;
+	> [class*="col-"]{
+	padding: 0 $xs;
+	}
+}
+
+.offset-col {
+	margin:0 $indent * -1;
+	> [class*="col-"]{
+		padding: 0;
+	}
+}
+
+.compact-col {
+	margin:0;
+	> [class*="col-"]{
+		padding: 0;
+	}
+}
+
+.expanded-row {
+    > .row-spacer{
+        height:$md * 2;
+    }
+}
+
+.condensed-row {
+    > .row-spacer{
+        height:$xs * 2
+    }
+}
+
+.compact-row {
+    > .row-spacer{
+        height:0;
+    }
+}
+
+
+
+
+@include sm {
+	.col-sm-constrain {
+		float: none;
+		max-width: $sm-col-sm-constrain;
+		margin: 0 auto;
+	}
+}
+
+@include xs {
+	.col-xs-constrain {
+		max-width: $xs-col-xs-constrain;
+		margin: 0 auto;
+	}
+}
+
+@include xs {
+	.col-xs-constrain-left {
+		max-width: $xs-col-xs-constrain;
+	}
+}

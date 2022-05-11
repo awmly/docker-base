@@ -1,0 +1,17 @@
+#! /bin/bash
+
+until /usr/bin/mysql --defaults-extra-file=/database/local.cnf -h $LOCAL_MYSQL_HOST $LOCAL_MYSQL_DATABASE --execute='SHOW TABLES;'; do
+  >&2 echo "DB is unavailable - sleeping"
+  sleep 1
+done
+
+>&2 echo "DB is up - importing database"
+
+
+echo "GETTING PRODUCTION DB"
+bash /database/exportproduction
+
+
+bash /database/importlocal
+
+echo "DB IMPORTED"

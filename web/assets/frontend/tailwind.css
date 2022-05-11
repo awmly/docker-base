@@ -1,0 +1,73 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "/web/public/cache/libs/material-icons/iconfont/material-icons.css";
+
+@import "css/variables.css";
+@import "css/mixins.css";
+
+@import "css/fonts.css";
+@import "css/typography.css";
+@import "css/template.css";
+
+@import "css/alignment.css";
+
+@import "css/container.css";
+@import "css/grid.css";
+@import "css/grid-orphans.css";
+
+@import "css/general-content.css";
+
+@import "css/module-holder.css";
+
+@import "css/forms.css";
+
+@import "css/buttons.css";
+@import "css/buttons.css";
+
+@import "modules/modules.css";
+
+@import "css/fg-colours.css";
+
+@import "css/presets.css";
+
+:root,
+.fg-default {
+  /* GENERAL */
+  --color: var(--color-body);
+  --link-color: theme("colors.primary.DEFAULT");
+  --link-color-hover: theme("colors.primary.dark");
+  --heading-color: var(--color-body);
+  --theme-contrast: theme("colors.xlight");
+  --body-bgr: theme("colors.white");
+
+  /* FORMS */
+  --field-bgr: theme("colors.light");
+  --field-colour: theme("colors.body");
+  --field-error-colour: theme("colors.red");
+  --placeholder-colour: theme("colors.body");
+  --border-colour: theme("colors.light");
+  --border-focus-colour: theme("colors.xdark");
+  --custom-input-colour: theme("colors.primary.DEFAULT");
+  --custom-input-colour-checked: theme("colors.secondary.DEFAULT");
+}
+
+.fg-alt {
+  /* GENERAL */
+  --color: theme("colors.white");
+  --heading-color: theme("colors.white");
+  --link-color: theme("colors.white");
+  --link-color-hover: theme("colors.xlight");
+
+  /* FORMS */
+  --field-bgr: theme("colors.xdark");
+  --field-colour: theme("colors.white");
+  --placeholder-colour: theme("colors.xlight");
+  --border-colour: theme("colors.light");
+  --border-focus-colour: theme("colors.white");
+  --custom-input-colour: theme("colors.light");
+  --custom-input-colour-checked: theme("colors.white");
+
+  color:var(--color);
+}

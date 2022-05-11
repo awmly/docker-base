@@ -1,0 +1,6 @@
+.flex-center{
+    @apply flex justify-center items-center;
+}
+.pos-abs-flex-center{
+    @apply flex justify-center items-center absolute inset-0;
+}

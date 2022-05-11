@@ -1,0 +1,222 @@
+/**
+TO INDENT A CONTAINER FROM THE EDGE OF THE SCREEN
+USE THE FOLLOWING
+@media (min-width: $screen-md-min) and (max-width: 1199px) {
+  max-width:90%;
+}
+
+@media (min-width: 1200px) and (max-width: 1699px) {
+  max-width:85%;
+}
+
+@media (min-width: 1700px) {
+  max-width: $lg-container-lg;
+}
+**/
+
+
+.container { /* md */
+
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 $indent;
+
+}
+
+.container-inner{
+  padding: 0 $indent;
+}
+
+.container-left {
+  margin-left:0;
+}
+
+.container-right {
+  margin-right:0;
+}
+
+
+
+.container-xs{
+
+  @include md{
+
+    max-width: $md-container-xs;
+
+    &.container-offset-md{
+      max-width: $md-container-md;
+      padding-right: $md-container-md - $md-container-xs;
+    }
+
+    &.container-offset-lg{
+      max-width: $md-container-lg;
+      padding-right: $md-container-lg - $md-container-xs;
+    }
+
+    &.container-offset-xl{
+      max-width: $md-container-xl;
+      padding-right: $md-container-xl - $md-container-xs;
+    }
+
+  }
+  @include lg{
+
+    max-width: $lg-container-xs;
+
+    &.container-offset-md{
+      max-width: $lg-container-md;
+      padding-right: $lg-container-md - $lg-container-xs;
+    }
+
+    &.container-offset-lg{
+      max-width: $lg-container-lg;
+      padding-right: $lg-container-lg - $lg-container-xs;
+    }
+
+    &.container-offset-xl{
+      max-width: $lg-container-xl;
+      padding-right: $lg-container-xl - $lg-container-xs;
+    }
+
+  }
+
+}
+
+.container-sm{
+
+  /* max-width: $sm-container-sm; */
+
+  @include md{
+
+    max-width: $md-container-sm;
+
+    &.container-offset-md{
+      max-width: $md-container-md;
+      padding-right: $md-container-md - $md-container-sm;
+    }
+
+    &.container-offset-lg{
+      max-width: $md-container-lg;
+      padding-right: $md-container-lg - $md-container-sm;
+    }
+
+    &.container-offset-xl{
+      max-width: $md-container-xl;
+      padding-right: $md-container-xl - $md-container-sm;
+    }
+
+  }
+  @include lg{
+
+    max-width: $lg-container-sm;
+
+    &.container-offset-md{
+      max-width: $lg-container-md;
+      padding-right: $lg-container-md - $lg-container-sm;
+    }
+
+    &.container-offset-lg{
+      max-width: $lg-container-lg;
+      padding-right: $lg-container-lg - $lg-container-sm;
+    }
+
+    &.container-offset-xl{
+      max-width: $lg-container-xl;
+      padding-right: $lg-container-xl - $lg-container-sm;
+    }
+
+  }
+
+}
+
+.container-md{
+
+  @include md{
+
+    max-width: $md-container-md;
+
+    &.container-offset-md{
+      max-width: $md-container-md;
+      padding-right: $md-container-md - $md-container-md;
+    }
+
+    &.container-offset-lg{
+      max-width: $md-container-lg;
+      padding-right: $md-container-lg - $md-container-md;
+    }
+
+    &.container-offset-xl{
+      max-width: $md-container-xl;
+      padding-right: $md-container-xl - $md-container-md;
+    }
+
+  }
+  @include lg{
+
+    max-width: $lg-container-md;
+
+    &.container-offset-md{
+      max-width: $lg-container-md;
+      padding-right: $lg-container-md - $lg-container-md;
+    }
+
+    &.container-offset-lg{
+      max-width: $lg-container-lg;
+      padding-right: $lg-container-lg - $lg-container-md;
+    }
+
+    &.container-offset-xl{
+      max-width: $lg-container-xl;
+      padding-right: $lg-container-xl - $lg-container-md;
+    }
+
+  }
+
+}
+
+.container-lg{
+
+  @include md{
+    max-width: 100%;
+  }
+  @include lg{
+    max-width: $lg-container-lg;
+  }
+
+}
+
+.container-xl{
+
+  @include md{
+    max-width: 100%;
+  }
+  @include lg{
+    max-width: $lg-container-xl;
+  }
+
+}
+
+.container-fullwidth{
+
+}
+
+.container-fluid {
+  padding: 0;
+  width: 100%;
+}
+
+.container{
+
+  &.container-offset-fullwidth{
+    margin:0;
+  }
+
+  .container:not(.container-pad){
+    padding-left:0;
+  }
+
+  .container:not(.container-pad):not([class*="container-offset-"]){
+    padding-right:0;
+  }
+
+}

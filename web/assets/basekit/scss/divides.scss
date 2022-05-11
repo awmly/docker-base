@@ -1,0 +1,127 @@
+/** Divide */
+.divide-xs,
+.divide-sm,
+.divide-md,
+.divide-lg,
+.divide-xl,
+.divide-xxl{
+  clear:both;
+  border-bottom: solid 1px $light;
+}
+
+.mar-divide{
+
+  &:before{
+    content: "";
+    position: absolute;
+    left:0;
+    right:0;
+    height:1px;
+    background:$light;
+  }
+
+  &.mar-divide-contain{
+    &:before{
+      left: $sm;
+      right: $sm;
+    }
+  }
+
+}
+
+@mixin divides($device) {
+
+  .divide-xs{
+    height:nth($xs_devices, $device);
+    margin-bottom:nth($xs_devices, $device);
+  }
+
+  .divide-sm{
+    height:nth($sm_devices, $device);
+    margin-bottom:nth($sm_devices, $device);
+  }
+
+  .divide-md{
+    height:nth($md_devices, $device);
+    margin-bottom:nth($md_devices, $device);
+  }
+
+  .divide-lg{
+    height:nth($lg_devices, $device);
+    margin-bottom:nth($lg_devices, $device);
+  }
+
+  .divide-xl{
+    height:nth($xl_devices, $device);
+    margin-bottom:nth($xl_devices, $device);
+  }
+
+  /*  .divide-xxl{ */
+  /*    height:nth($xl2_devices, $device); */
+  /*    margin-bottom:nth($xl2_devices, $device); */
+  /*  } */
+
+
+  .mar-divide{
+
+    &.mar-top-xs{
+      margin-top: nth($xs_devices, $device) * 2;
+      &:before{
+        top:-nth($xs_devices, $device);
+      }
+    }
+
+    &.mar-top-sm{
+      margin-top: nth($sm_devices, $device) * 2;
+      &:before{
+        top:-nth($sm_devices, $device);
+      }
+    }
+
+    &.mar-top-md{
+      margin-top: nth($md_devices, $device) * 2;
+      &:before{
+        top:-nth($md_devices, $device);
+      }
+    }
+
+    &.mar-top-lg{
+      margin-top: nth($lg_devices, $device) * 2;
+      &:before{
+        top:-nth($lg_devices, $device);
+      }
+    }
+
+    &.mar-top-xl{
+      margin-top: nth($xl_devices, $device) * 2;
+      &:before{
+        top:-nth($xl_devices, $device);
+      }
+    }
+
+    /*  &.mar-top-xl2{ */
+    /*    margin-top: nth($xl2_devices, $device) * 2; */
+    /*    &:before{ */
+    /*      top:-nth($xl2_devices, $device); */
+    /*    } */
+    /*  } */
+
+  }
+
+}
+
+@include xs{
+  @include divides(1);
+}
+
+@include sm{
+  @include divides(2);
+}
+
+@include md{
+  @include divides(3);
+}
+
+@include lg{
+  @include divides(4);
+}

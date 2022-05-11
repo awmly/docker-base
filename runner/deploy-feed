@@ -1,0 +1,23 @@
+#! /bin/bash
+
+echo "DEPLOY FEED"
+
+if [ "$FEED_DEPLOY" = "1" ]; then # probably don't need this
+  cd /build
+  composer install --verbose
+fi
+
+echo "SERVER=PRODUCTION_RUNNER" > /web/environments/server.env
+php /web/cli /script/feed-parse-init
+
+var=0
+
+
+while [ "$STATUS" != "COMPLETE" ]; do
+  echo $var > /web/assets/scripts/feed/status
+  var=$((var+1))
+  php /web/cli /script/feed-parse
+  STATUS=$(cat /web/assets/scripts/feed/status)
+done
+
+cp -r /web/assets/scripts/feed/* /builds/${CI_PROJECT_PATH}/web/assets/scripts/feed

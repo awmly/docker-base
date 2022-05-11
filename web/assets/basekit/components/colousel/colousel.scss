@@ -1,0 +1,69 @@
+
+.colousel{
+
+  /*  ***** */
+  /*  CORE LOGIC - DO NOT EDIT - USE FRONTEND MODULES */
+  /*  ***** */
+
+  position: relative;
+
+  /* visibility: hidden; */
+
+  &.colousel-loaded{
+    visibility: visible;
+  }
+
+  
+
+  
+
+  /*  ADDING THIS WILL ALLOW FOR SLIGHT OVERFLOWS ON THE COLOUSEL */
+  /*  eg FOR DROP SHADOWS on ARTICLES */
+  /*  or FOR SCALE ANIMATIONS */
+  /*
+  .colousel-scroll{
+      padding:$md;
+      margin-left: -$md;
+      margin-right: -$md;
+  }
+  */
+
+  &.colousel-centered{
+    .colousel-holder{
+      margin:0 auto;
+    }
+  }
+
+  .colousel-inner{
+    position: relative;
+    height:100%;
+    
+  }
+
+  &.colousel-active{
+    .colousel-holder{
+      overflow:hidden; /* THIS MIGHT or MIGHT NOT be NEEDED */
+    }
+    .colousel-scroll{
+
+      position: relative;
+      overflow: auto;
+      scrollbar-width: none;
+      
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+    }
+    .colousel-inner{
+      flex-wrap:nowrap;
+    }
+  }
+
+  .colousel-col{
+    /*  position: absolute; */
+    /*  top:0; */
+    /*  left:0; */
+  }
+
+}

@@ -1,0 +1,190 @@
+stages:
+  - catalyst
+  - feed
+  - test
+  - deploy
+  - firebase_deploy
+  - firebase_optimise
+  - shopify
+
+image: apld/base-runner:3.0
+
+tests:
+
+  stage: test
+
+  artifacts:
+    paths:
+    - dist/
+
+  script:
+    - bash runner/tests-build
+
+  after_script:
+    - bash runner/tests-artifacts
+
+  only:
+    - staging
+    - tags
+    - triggers
+    - api
+
+  except:
+    variables:
+      - $FIREBASE_DEPLOY == "1"
+      - $CATALYST_DEPLOY == "1"
+      - $SHOPIFY_DEPLOY == "1"
+      - $FEED_DEPLOY == "1"
+
+deploy_staging:
+
+  stage: deploy
+
+  script:
+    - bash runner/deploy-staging
+
+  environment:
+    name: Staging
+
+  only:
+    - staging
+
+
+deploy_production:
+
+  stage: deploy
+
+  script:
+    - bash runner/deploy-production
+
+
+  after_script:
+    - bash runner/deploy-verify
+
+  artifacts:
+    paths:
+    - backups/
+
+  environment:
+    name: Production
+
+  only:
+    - tags
+    - triggers
+    - api
+
+  except:
+    variables:
+      - $FIREBASE_DEPLOY == "1"
+      - $CATALYST_DEPLOY == "1"
+      - $SHOPIFY_DEPLOY == "1"
+      - $FEED_DEPLOY == "1"
+
+deploy_firebase:
+
+  stage: firebase_deploy
+
+  script:
+    - bash runner/deploy-firebase
+
+  environment:
+    name: Firebase
+
+  only:
+    - triggers
+    - api
+    
+  except:
+    variables:
+      - $CATALYST_DEPLOY == "1"
+      - $SHOPIFY_DEPLOY == "1"
+      - $FEED_DEPLOY == "1"
+
+optimise_firebase:
+
+  stage: firebase_optimise
+
+  script:
+    - bash runner/optimise-firebase
+
+  artifacts:
+    paths:
+    - firebase/public
+
+  environment:
+    name: Firebase
+
+  only:
+    - triggers
+    - api
+    
+  except:
+    variables:
+      - $CATALYST_DEPLOY == "1"
+      - $SHOPIFY_DEPLOY == "1"
+      - $FEED_DEPLOY == "1"
+
+
+deploy_catalyst:
+
+  stage: catalyst
+
+  script:
+    - bash runner/deploy-catalyst
+
+  only:
+    - triggers
+    - api
+    
+  except:
+    variables:
+      - $FIREBASE_DEPLOY == "1"
+      - $SHOPIFY_DEPLOY == "1"
+      - $FEED_DEPLOY == "1"
+
+
+deploy_shopify:
+
+  stage: shopify
+
+  script:
+    - bash runner/deploy-shopify
+
+  artifacts:
+    paths:
+    - shopify/public
+
+  environment:
+    name: Shopify
+
+  only:
+    - triggers
+    - api
+    
+  except:
+    variables:
+      - $FIREBASE_DEPLOY == "1"
+      - $CATALYST_DEPLOY == "1"
+      - $FEED_DEPLOY == "1"
+
+
+deploy_feed:
+
+  stage: feed
+
+  script:
+    - bash runner/deploy-feed
+
+  only:
+    - triggers
+    - api
+    
+  except:
+    variables:
+      - $FIREBASE_DEPLOY == "1"
+      - $SHOPIFY_DEPLOY == "1"
+      - $CATALYST_DEPLOY == "1"
+
+  artifacts:
+    paths:
+    - web/assets/scripts/feed

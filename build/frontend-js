@@ -1,0 +1,33 @@
+#! /bin/bash
+
+echo "BUILDING FRONTEND JS..."
+
+TIMESTAMP=$( date +%s )
+
+SCRIPTS=$( node /web/assets/frontend/frontend.js )
+
+rm /web/public/cache/assets/${VHOST}-*.js
+rm /web/public/cache/assets/frontend-*.js
+rm /web/public/cache/assets/frontend-*.js.map
+
+echo $TIMESTAMP > /web/public/cache/assets/.frontend_js
+
+npx terser $SCRIPTS --compress --mangle --source-map "url='/cache/assets/frontend-${TIMESTAMP}.js.map'" -o /web/public/cache/assets/frontend-${TIMESTAMP}.js
+
+#echo ";" >> /web/public/cache/assets/frontend-${TIMESTAMP}.js
+#cat /web/assets/frontend/js/webfont-loader.js >> /web/public/cache/assets/frontend-${TIMESTAMP}.js
+
+
+cp /web/public/cache/assets/frontend-${TIMESTAMP}.js /web/public/cache/assets/${VHOST}-${TIMESTAMP}.js
+sed -i 's/\/\/# sourceMappingURL=[^;]*//g' /web/public/cache/assets/${VHOST}-${TIMESTAMP}.js
+
+
+#shopify
+cp /web/public/cache/assets/${VHOST}-${TIMESTAMP}.js /web/assets/shopify/theme/assets/frontend.js
+cp /web/public/cache/assets/frontend-${TIMESTAMP}.js /web/assets/shopify/theme/assets/frontend-map.js
+cp /web/public/cache/assets/frontend-${TIMESTAMP}.js.map /web/assets/shopify/theme/assets/frontend.js.map
+sed -i "s/sourceMappingURL=[^;]*/sourceMappingURL=frontend.js.map?${TIMESTAMP}/g" /web/assets/shopify/theme/assets/frontend-map.js
+
+TOTAL=$( expr $( date +%s ) - $TIMESTAMP)
+
+echo "BUILD COMPLETED IN ${TOTAL} SECONDS"

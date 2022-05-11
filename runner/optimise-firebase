@@ -1,0 +1,96 @@
+#! /bin/bash
+
+if [ "$FIREBASE_ACTIVE" = "1" ] && [ -z "$FIREBASE_CLONE" ]; then
+
+  echo "DEPLOY FIREBASE"
+
+  cd /firebase
+  firebase use $FIREBASE_PROJECT --token ${FIREBASE_TOKEN}
+
+  cd /build
+  npm install
+  bash npm-post-install
+
+  #composer install --verbose
+
+  echo "SERVER=PRODUCTION_RUNNER" > /web/environments/server.env
+
+  if [ "$FIREBASE_TARGET" == "functions" &&  ]; then
+
+    echo "DONE"
+  
+  else
+
+    mkdir -p /runner/tmp/scss/
+    mkdir -p /runner/tmp/css/
+
+    #php /web/cli /script/set-template-scss
+
+    #bash /build/template-scss
+
+    php /web/cli /script/get-page-init
+
+    while [ "$STATUS" != "COMPLETE" ]; do
+      php /web/cli /script/get-page
+      STATUS=$(cat /firebase/status)
+    done
+
+    echo "AJAX MODULES"
+    php /web/cli /script/ajax-modules
+
+    bash /build/modules
+    bash /build/frontend-js # built so purge can see classes
+    (cd /build && NODE_ENV=firebase bash /build/frontend-tailwind)
+
+    rm /firebase/public/_ajax-modules.html
+
+    # bash /build/template-scss
+    # php /web/cli /script/upload-template-scss
+
+    cd /runner
+    #npm install
+    node /runner/critical.js
+
+    php /web/cli /script/inject-critical
+
+    php /web/cli /script/make-sitemap
+
+    php /web/cli /script/set-robots
+
+    php /web/cli /script/set-404
+
+    php /web/cli /script/set-redirects
+
+    php /web/cli /script/set-cors
+
+
+    php /web/cli /script/upload-assets
+
+    php /web/cli /script/rewrite-urls
+
+    cp -r /firebase/public/* /builds/${CI_PROJECT_PATH}/firebase/public
+
+    echo "DEPLOYING $FIREBASE_TARGET TO $FIREBASE_RESOURCE"
+    cd /firebase
+    
+
+    if [ ! -z "$FIREBASE_PREVIEW" ]; then # not empty
+    
+      firebase hosting:channel:deploy $FIREBASE_PREVIEW --token ${FIREBASE_TOKEN}
+    
+    else
+    
+      firebase deploy -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --token ${FIREBASE_TOKEN} --only hosting
+
+    fi
+
+    # target deploy
+    # firebase target:apply hosting $FIREBASE_TARGET $FIREBASE_RESOURCE
+    # firebase deploy -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --token ${FIREBASE_TOKEN} --only hosting:$FIREBASE_TARGET
+    
+    # preview channel deploy
+    # firebase hosting:channel:deploy staging --token ${FIREBASE_TOKEN}
+  
+  fi
+
+fi

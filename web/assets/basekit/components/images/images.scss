@@ -1,0 +1,192 @@
+.fade-in{
+  opacity:0;
+  transition: opacity 1s ease-in;
+  &.fade-in-active{
+    opacity:1;
+  }
+}
+
+.fade-on-load{
+  opacity:0;
+  transition: opacity 0.3s ease-in;
+  &.fade-on-load-active{
+    opacity:1;
+  }
+}
+
+ .defer-hidden{
+	visibility:hidden;
+}
+
+.bgr-img{
+  position: relative;
+}
+
+.bgr-img-mask{
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+
+.resp-bgr-normal{
+  width:100%;
+  height:100%;
+  background-repeat: no-repeat;
+}
+
+.bgr-top-left{
+  background-position:top left;
+}
+.bgr-center-center{
+  background-position:center center;
+}
+.bgr-bottom-right{
+  background-position:bottom right;
+}
+.bgr-center-0{
+  background-position:center 0;
+}
+
+.resp-bgr-contain{
+    /* max-width:100% !important; DO NOT DO THIS */
+    /* max-height:100% !important; IT FUCKS UP IMAGES WITHIN GALLERIES */
+    width:100% !important;
+    height:100% !important;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.resp-bgr-cover{
+    width:100% !important;
+    height:100% !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+@include desktop{
+	.has-paralax{
+  		.resp-bgr-paralax{
+    		background-attachment:fixed;
+		}
+	}
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.img-border {
+  border:5px solid $xlight;
+  background:$xlight;
+  transition: background 0.5s, border 0.5s;
+}
+
+.img-caption{
+  background:$xlight;
+  border:solid 1px $light;
+  border-top:none;
+  padding:$xs2 $xs;
+  text-align:center;
+}
+
+
+.image-holder{
+	position:relative;
+}
+
+.image-overlay{
+
+	position:absolute;
+	left:0;
+	width:100%;
+	z-index:100;
+
+	.container{
+		height:100%;
+	}
+
+	.overlay-text{
+		/* padding:$sm; */
+		&.overlay-dark{
+			color:$white;
+			h1,h2,h3,h4,h5,h6,p,li{ color:$white; }
+			@include bg-rgba($black, 0.75);
+		}
+		&.overlay-light{
+			color:$xdark;
+			h1,h2,h3,h4,h5,h6,p,li{ color:$xdark; }
+			@include bg-rgba($white, 0.75);
+		}
+	}
+
+	&.overlay-bar{
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+		.overlay-text{
+			text-align:center;
+			padding: 18px 15px;
+		}
+	}
+
+	&.overlay-box{
+		top:0;
+		height:100%;
+		.overlay-text{
+			position:absolute;
+		}
+		/*.overlay-extra-small{
+			width:$container-xs;
+		}
+		.overlay-small{
+			width:$container-sm;
+		}
+		.overlay-medium{
+			width:$container-md;
+		}
+		.overlay-large{
+			width:$container-lg;
+		}
+		.overlay-extra-large{
+			width:$container-xl;
+		}*/
+		.top-left{
+				top:30px;
+				left:15px;
+		}
+		.top-right{
+			top:30px;
+			right:15px;
+		}
+		.middle-left{
+			@include valign-mid();
+			left:15px;
+		}
+		.middle-center{
+			@include align-mid();
+		}
+	}
+
+	@include mobile{
+		&.overlay-box{
+			.overlay-text{
+				width:80%;
+				right:10%;
+				left:10%;
+			}
+		}
+	}
+
+}
+
+.mask {
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  background: $black;
+  background: rgba($black,0.6);
+  z-index:40;
+}

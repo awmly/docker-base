@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Copy npm / composer files
+#cp /build/package.json /build-ro/package.json
+#cp /build/package-lock.json /build-ro/package-lock.json
+#cp /build/composer.json /build-ro/composer.json
+#cp /build/composer.lock /build-ro/composer.lock
+
+export RUNNER=1
+
+echo "SERVER=PRODUCTION_RUNNER" > /web/environments/server.env
+
+
+cd /build
+
+# Install npm
+npm ci --verbose
+
+# Install composer
+composer install --verbose
+
+# Node post install
+bash /build/npm-post-install
+
+# Build node modules
+NODE_ENV=production npm run build

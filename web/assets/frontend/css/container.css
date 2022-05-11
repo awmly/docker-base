@@ -1,0 +1,137 @@
+@layer utilities{
+
+.ctr-fw{
+    @apply mx-auto;
+
+    width:100%;
+    max-width: calc(100vw - (theme('spacing.theme') * 2));
+}
+
+.ctr-lg{
+
+    @apply mx-auto;
+
+    width:100%;
+
+    @screen mobile{
+        max-width: calc(100vw - (theme('spacing.theme') * 2));
+    }
+
+    @screen lg{ /* medium */
+        max-width:calc(theme('screens.lg') - 60px);
+    }
+
+    @screen xl{ /* large */
+        max-width:calc(min(1800px, 100vw) - 60px);
+    }
+
+}
+
+.ctr{
+
+    @apply mx-auto;
+
+    width:100%;
+
+    @screen mobile{
+        max-width: calc(100vw - (theme('spacing.theme') * 2));
+    }
+
+    @screen lg{ /* medium */
+        max-width:calc(theme('screens.lg') - 60px);
+    }
+
+    @screen xl{ /* large */
+        max-width:calc(theme('screens.xl') - 60px);
+    }
+
+    @screen 2xl{ /* large */
+        max-width:calc(theme('screens.2xl') - 60px);
+    }
+}
+
+.ctr-sm{
+
+    @apply mx-auto;
+
+    width:100%;
+
+    @screen mobile{
+        max-width: calc(100vw - (theme('spacing.theme') * 2));
+    }
+
+    @screen lg{ /* medium */
+        max-width:calc(theme('screens.lg') - 100px);
+    }
+
+    @screen xl{ /* large */
+        max-width:calc(theme('screens.xl') - 250px);
+    }
+
+    @screen 2xl{ /* large */
+        max-width:calc(theme('screens.2xl') - 400px);
+    }
+}
+
+.ctr-xs{
+
+    @apply mx-auto;
+
+    width:100%;
+
+    @screen phone{
+        max-width: calc(100vw - (theme('spacing.theme') * 2));
+    }
+
+    @screen sm{ /* tablet */
+        max-width:calc(theme('screens.sm') - 0px);
+    }
+
+    @screen md{ /* tablet */
+        max-width:calc(theme('screens.md') - 100px);
+    }
+
+    @screen lg{ /* medium */
+        max-width:calc(theme('screens.lg') - 300px);
+    }
+
+    @screen xl{ /* large */
+        max-width:calc(theme('screens.xl') - 500px);
+    }
+
+    @screen 2xl{ /* large */
+        max-width:calc(theme('screens.2xl') - 700px);
+    }
+}
+
+.ctr-offset{
+    
+    width:100%;
+
+    @screen mobile{
+        max-width: calc(100vw - (theme('spacing.theme') * 2));
+    }
+
+    @screen lg{
+        max-width:calc(100% - (50vw - (964px/2)));
+    }
+
+    @screen xl{
+        max-width:calc(100% - (50vw - (1220px/2)));
+    }
+
+    @screen 2xl{
+        max-width:calc(100% - (50vw - (1476px/2)));
+    }
+
+}
+
+.ctr-left{
+    margin:0;
+}
+
+.ctr-right{
+    margin:0 0 0 auto;
+}
+
+}

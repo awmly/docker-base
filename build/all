@@ -1,0 +1,4 @@
+#! /bin/bash
+
+sh /build/frontend-tailwind
+sh /build/frontend-js

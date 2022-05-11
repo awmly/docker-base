@@ -1,0 +1,33 @@
+#!/usr/bin/env php
+<?php
+
+// Usage - php /web/cli /script/cdn-upload
+
+define('STAN_START', microtime(true));
+
+// Set SERVER var
+$args = $_SERVER['argv'];
+$_SERVER['REQUEST_URI'] = $args[1];
+$_ENV['CLI'] = '1';
+
+// Include paths
+include(__DIR__ ."/public/paths.php");
+
+// Load and start the autoloader
+include(PATH_LIB . 'STAN/Core/Autoload.php');
+\STAN\Core\Autoload::Init();
+
+// Load vendors
+include(PATH_LIB.'vendor/autoload.php');
+
+// Init STAN
+$STAN = new STAN\Core\Core;
+
+// Load
+$STAN->load();
+
+// Dispatch
+$STAN->preWP();
+
+$STAN->postWP();
+$STAN->setRoute();

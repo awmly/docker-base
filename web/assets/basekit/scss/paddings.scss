@@ -1,0 +1,227 @@
+/* ========================================================================
+ * STAN Utils: Margins/Paddings
+ * Author: Andrew Womersley
+ * ======================================================================== */
+
+ /** No Paddings */
+ .no-pad{
+   padding:0 !important;
+ }
+ .no-pad-top{
+   padding-top:0 !important;
+ }
+ .no-pad-btm{
+   padding-bottom:0 !important;
+ }
+ .no-pad-left{
+   padding-left:0 !important;
+ }
+ .no-pad-right{
+   padding-right:0 !important;
+ }
+ .no-pad-hor{
+   padding-left:0 !important;
+   padding-right:0 !important;
+ }
+ .no-pad-ver{
+   padding-top:0 !important;
+   padding-bottom:0 !important;
+ }
+
+
+/** Left And Right Paddings */
+.pad-left-xxs{
+    padding-left:$xxs;
+  }
+  .pad-right-xxs{
+    padding-right:$xxs;
+  }
+  .pad-hor-xxs{
+    padding-left:$xxs;
+    padding-right:$xxs;
+  }
+.pad-left-xs{
+    padding-left:$xs;
+  }
+  .pad-right-xs{
+    padding-right:$xs;
+  }
+  .pad-hor-xs{
+    padding-left:$xs;
+    padding-right:$xs;
+  }
+.pad-left-sm{
+    padding-left:$sm;
+  }
+  .pad-right-sm{
+    padding-right:$sm;
+  }
+  .pad-hor-sm{
+    padding-left:$sm;
+    padding-right:$sm;
+  }
+.pad-left-md{
+    padding-left:$md;
+  }
+  .pad-right-md{
+    padding-right:$md;
+  }
+  .pad-hor-md{
+    padding-left:$md;
+    padding-right:$md;
+  }
+.pad-left-lg{
+    padding-left:$lg;
+  }
+  .pad-right-lg{
+    padding-right:$lg;
+  }
+  .pad-hor-lg{
+    padding-left:$lg;
+    padding-right:$lg;
+  }
+.pad-left-xl{
+    padding-left:$xl;
+  }
+  .pad-right-xl{
+    padding-right:$xl;
+  }
+  .pad-hor-xl{
+    padding-left:$xl;
+    padding-right:$xl;
+  }
+.pad-left-xxl{
+    padding-left:$xl2;
+  }
+  .pad-right-xxl{
+    padding-right:$xl2;
+  }
+  .pad-hor-xxl{
+    padding-left:$xl2;
+    padding-right:$xl2;
+  }
+
+
+@mixin padding($device) {
+
+  /** Extra Extra Small Padding */
+  /*  .pad-xxs{ */
+  /*    padding:nth($xxs_devices, $device); */
+  /*  } */
+  /*  .pad-top-xxs{ */
+  /*    padding-top:nth($xxs_devices, $device); */
+  /*  } */
+  /*  .pad-btm-xxs{ */
+  /*    padding-bottom:nth($xxs_devices, $device); */
+  /*  } */
+  /*  .pad-ver-xxs{ */
+  /*    padding-top:nth($xxs_devices, $device); */
+  /*    padding-bottom:nth($xxs_devices, $device); */
+  /*  } */
+
+  /** Extra Small Padding */
+  .pad-xs{
+    padding:nth($xs_devices, $device);
+  }
+  .pad-top-xs{
+    padding-top:nth($xs_devices, $device);
+  }
+  .pad-btm-xs{
+    padding-bottom:nth($xs_devices, $device);
+  }
+  .pad-ver-xs{
+    padding-top:nth($xs_devices, $device);
+    padding-bottom:nth($xs_devices, $device);
+  }
+
+  /** Small Padding */
+  .pad-sm{
+    padding:nth($sm_devices, $device);
+  }
+  .pad-top-sm{
+    padding-top:nth($sm_devices, $device);
+  }
+  .pad-btm-sm{
+    padding-bottom:nth($sm_devices, $device);
+  }
+  .pad-ver-sm{
+    padding-top:nth($sm_devices, $device);
+    padding-bottom:nth($sm_devices, $device);
+  }
+
+  /** Medium Padding */
+  .pad-md{
+    padding:nth($md_devices, $device);
+  }
+  .pad-top-md{
+    padding-top:nth($md_devices, $device);
+  }
+  .pad-btm-md{
+    padding-bottom:nth($md_devices, $device);
+  }
+  .pad-ver-md{
+    padding-top:nth($md_devices, $device);
+    padding-bottom:nth($md_devices, $device);
+  }
+
+  /** Large Padding */
+  .pad-lg{
+    padding:nth($lg_devices, $device);
+  }
+  .pad-top-lg{
+    padding-top:nth($lg_devices, $device);
+  }
+  .pad-btm-lg{
+    padding-bottom:nth($lg_devices, $device);
+  }
+  .pad-ver-lg{
+    padding-top:nth($lg_devices, $device);
+    padding-bottom:nth($lg_devices, $device);
+  }
+
+  /** Extra Large Padding */
+  .pad-xl{
+    padding:nth($xl_devices, $device);
+  }
+  .pad-top-xl{
+    padding-top:nth($xl_devices, $device);
+  }
+  .pad-btm-xl{
+    padding-bottom:nth($xl_devices, $device);
+  }
+  .pad-ver-xl{
+    padding-top:nth($xl_devices, $device);
+    padding-bottom:nth($xl_devices, $device);
+  }
+
+  /** Extra Extra Large Padding */
+  /*  .pad-xxl{ */
+  /*    padding:nth($xl2_devices, $device); */
+  /*  } */
+  /*  .pad-top-xxl{ */
+  /*    padding-top:nth($xl2_devices, $device); */
+  /*  } */
+  /*  .pad-btm-xxl{ */
+  /*    padding-bottom:nth($xl2_devices, $device); */
+  /*  } */
+  /*  .pad-ver-xxl{ */
+  /*    padding-top:nth($xl2_devices, $device); */
+  /*    padding-bottom:nth($xl2_devices, $device); */
+  /*  } */
+}
+
+@include xs{
+  @include padding(1);
+}
+
+@include sm{
+  @include padding(2);
+}
+
+@include md{
+  @include padding(3);
+}
+
+@include lg{
+  @include padding(4);
+}

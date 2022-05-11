@@ -1,0 +1,23 @@
+.pos-top{
+  position: absolute;
+  top:0;
+}
+.pos-middle{
+  @include valign-mid;
+}
+.pos-btm{
+  position: absolute;
+  bottom:0;
+}
+.pos-left{
+  left:0;
+}
+.pos-center{
+  @include halign-mid;
+}
+.pos-right{
+  right:0;
+}
+.pos-middle-center{
+  @include align-mid;
+}

@@ -1,0 +1,17 @@
+#! /bin/bash
+
+TIMESTAMP=$( date +%s )
+
+echo "BUILDING TAILWIND CSS..."
+
+# npx tailwindcss -i /web/assets/frontend/tailwind.css -o /web/public/cache/assets/tailwind-${TIMESTAMP}.css -c /build/tailwind.config.js
+npx postcss /web/assets/frontend/tailwind.css -o /web/public/cache/assets/tmp-tailwind-${TIMESTAMP}.css --config /build
+
+rm /web/public/cache/assets/tailwind-*.css
+mv /web/public/cache/assets/tmp-tailwind-${TIMESTAMP}.css  /web/public/cache/assets/tailwind-${TIMESTAMP}.css 
+
+echo $TIMESTAMP > /web/public/cache/assets/.frontend_tailwind
+
+TOTAL=$( expr $( date +%s ) - $TIMESTAMP)
+
+echo "BUILD COMPLETED IN ${TOTAL} SECONDS"

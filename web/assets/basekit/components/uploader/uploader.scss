@@ -1,0 +1,91 @@
+.uploader {
+
+  .tile{
+    position: relative;
+    float:left;
+    display:inline-block;
+    padding:5px 40px 5px 10px;
+    margin-right:10px;
+    margin-bottom:10px;
+    border-radius:3px;
+    overflow:hidden;
+    i{
+      position: absolute;
+      top:9px;
+      right:10px;
+      cursor:pointer;
+      z-index:20;
+      font-size:20px;
+    }
+  }
+
+  .file{
+    background:$xlight;
+    border:solid 1px $light;
+    span{
+      position: relative;
+      z-index:10;
+    }
+    .progress{
+      position: absolute;
+      top:0;
+      left:0;
+      width:0;
+      height:100%;
+      background:$light;
+    }
+    .uploading{
+      display:none;
+    }
+    &.current{
+      .uploading{
+        display:block;
+      }
+      .clear{
+        display:none;
+      }
+      .progress{
+        display:block;
+      }
+    }
+  }
+
+  .deleted{
+    display:none;
+  }
+
+  .error{
+    background:$light;
+    display:none;
+    &.active{
+      display:inline-block;
+    }
+  }
+
+  .add{
+
+    position:relative;
+    cursor:pointer !important;
+    overflow:hidden;
+    margin-top:$xs;
+
+    a{
+      position:relative;
+      z-index:0;
+    }
+
+    input{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100px;
+      margin-top:-50px;
+      z-index:1;
+      opacity:0;
+      cursor:pointer !important;
+    }
+
+  }
+
+}

@@ -1,0 +1,172 @@
+@layer components{
+
+html .btn {
+  @apply relative inline-flex justify-center items-center text-center py-2xs px-sm border border-transparent shadow-sm text-lg no-underline overflow-hidden
+    transition-all ease-in-out duration-300;
+  @apply hover:shadow-md focus:shadow-md group-hover:shadow-md group-focus:shadow-md;
+
+  &:not(:focus-visible){
+    outline: none;
+  }
+
+  span {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    z-index: 100;
+
+    &::before {
+      content: "";
+      opacity: 0;
+      transition: opacity 0.3s;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    &::after {
+      @apply material-icons;
+      content: "autorenew";
+      text-transform: lowercase;
+      color: #eee;
+      font-size: 30px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      line-height: 40px;
+      text-align: center;
+      width: 30px;
+      height: 40px;
+      margin: -20px 0 0 -15px;
+      animation-name: spin;
+      animation-duration: 1000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+  }
+
+  .form-submitting & {
+    span {
+      &::before,
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+html .btn-block{
+  display: flex;
+  width: 100%;
+}
+
+/** PRMARY **/
+.btn-primary {
+  html &{
+    @apply bg-primary text-primary-contrast;
+  }
+  .group:hover &, .group:focus &, html &:hover, html &:focus{
+    @apply bg-primary-dark text-secondary-contrast;
+  }
+  
+}
+
+.btn-outline-primary {
+  html &{
+    @apply border border-primary text-primary;
+  }
+  .group:hover &, .group:focus &, html &:hover, html &:focus{
+    @apply bg-primary text-primary-contrast;
+  }
+}
+
+
+/** SECONDARY **/
+.btn-secondary {
+  html &{
+    @apply bg-secondary text-secondary-contrast;
+  }
+  .group:hover &, .group:focus &, html &:hover, html &:focus{
+    @apply bg-secondary-dark text-primary-contrast;
+  }
+}
+
+.btn-outline-secondary {
+  html &{
+    @apply border border-secondary text-secondary;
+  }
+  .group:hover &, .group:focus &, html &:hover, html &:focus{
+    @apply bg-secondary text-primary-contrast;
+  }
+}
+
+/** DARK (BLACK) **/
+.btn-dark {
+  html &{
+    @apply bg-xdark text-white;
+  }
+  .group:hover &, .group:focus &, html &:hover, html &:focus{
+    @apply bg-black text-white;
+  }
+}
+
+.btn-outline-dark {
+  html &{
+    @apply border border-xdark text-black;
+  }
+  .group:hover &, .group:focus &, html &:hover, html &:focus{
+    @apply bg-xdark text-white;
+  }
+}
+/* set dark button as a light button when on dark background */
+.fg-alt{
+     .btn-outline-dark {
+        html &{
+          @apply border border-white text-white;
+        }
+        .group:hover &, .group:focus &, html &:hover, html &:focus{
+          @apply bg-white text-black;
+        }
+    } 
+}
+
+
+/** LIGHT (WHITE) **/
+.btn-light {
+  html &{
+    @apply bg-white text-black;
+  }
+  .group:hover &, .group:focus &, html &:hover, html &:focus{
+    @apply bg-black text-white;
+  }
+}
+
+/* set light button as a dark button when on normal (light) background */
+.btn-outline-light {
+  html &{
+    @apply border border-xdark text-black;
+  }
+  .group:hover &, .group:focus &, html &:hover, html &:focus{
+    @apply bg-xdark text-white;
+  }
+}
+
+/* set correct light button styles for background */
+.fg-alt{
+  .btn-outline-light {
+    html &{
+      @apply border border-white text-white;
+    }
+    .group:hover &, .group:focus &, html &:hover, html &:focus{
+      @apply bg-white text-black;
+    }
+  } 
+}
+
+}

@@ -1,0 +1,92 @@
+@mixin color($name, $color) {
+
+  .#{$name}{
+    color:var(--color-#{$name});
+  }
+
+}
+
+@mixin background($name, $color, $contrast) {
+
+  .bg-#{$name}{
+    background-color:var(--color-#{$name});
+    /*  --background-color: #{$color}; */
+    /*  --contrast-color: #{$contrast}; */
+    &.set-var{
+      --background-color: #{$color};
+    }
+    &.set-color{
+      /* color:$contrast; */
+      /*  h1,h2,h3,h4,h5,h6,p,a { color:$contrast; } */
+    }
+  }
+
+  .bga9-#{$name}{
+    background-color:rgba(red($color), green($color), blue($color), 0.9);
+    &.set-color{
+      color:$contrast;
+    }
+  }
+  .bga8-#{$name}{
+    background-color:rgba(red($color), green($color), blue($color), 0.8);
+    &.set-color{
+      color:$contrast;
+    }
+  }
+  .bga7-#{$name}{
+    background-color:rgba(red($color), green($color), blue($color), 0.7);
+    &.set-color{
+      color:$contrast;
+    }
+  }
+  .bga6-#{$name}{
+    background-color:rgba(red($color), green($color), blue($color), 0.6);
+    &.set-color{
+      color:$contrast;
+    }
+  }
+  .bga5-#{$name}{
+    background-color:rgba(red($color), green($color), blue($color), 0.5);
+    &.set-color{
+      color:$contrast;
+    }
+  }
+  .bga4-#{$name}{
+    background-color:rgba(red($color), green($color), blue($color), 0.4);
+    &.set-color{
+      color:$contrast;
+    }
+  }
+  .bga3-#{$name}{
+    background-color:rgba(red($color), green($color), blue($color), 0.3);
+    &.set-color{
+      color:$contrast;
+    }
+  }
+  .bga2-#{$name}{
+    background-color:rgba(red($color), green($color), blue($color), 0.2);
+    &.set-color{
+      color:$contrast;
+    }
+  }
+  .bga1-#{$name}{
+    background-color:rgba(red($color), green($color), blue($color), 0.1);
+    &.set-color{
+      color:$contrast;
+    }
+  }
+
+}
+
+@mixin border($name, $color) {
+
+  .bdr-#{$name}{
+    border-color:$color;
+  }
+}
+
+@mixin background-alpha($name, $color, $contrast) {
+
+  
+
+}

@@ -1,0 +1,74 @@
+/*  ***** */
+/*  CORE LOGIC - DO NOT EDIT - USE FRONTEND MODULES */
+/*  ***** */
+
+.popup{
+
+  position: fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index:1000;
+  display:none;
+  align-items: center;
+  justify-content: center;
+
+  &.popup-open{
+    display:flex;
+  }
+
+  &.popup-loading{
+    .popup-display{
+      display:none;
+    }
+  }
+
+  .popup-mask{
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index:10;
+  }
+
+  .popup-display{
+    position: relative;
+    z-index:20;
+  }
+
+  .popup-content{
+    height:100%;
+    width:100%;
+  }
+
+  .popup-close{
+    position:absolute;
+    top:0;
+    right:0;
+    z-index:50;
+    cursor:pointer;
+  }
+
+  .popup-scroll{
+    height:100%;
+    overflow:auto;
+  }
+
+  .popup-hidden{
+    height:100%;
+    overflow:hidden;
+  }
+
+  iframe{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    height:100%;
+  }
+
+}

@@ -1,0 +1,54 @@
+/*  ***** */
+/*  CORE LOGIC - DO NOT EDIT - USE FRONTEND MODULES */
+/*  ***** */
+
+.nav-vertical{
+
+	li {
+		position: relative;
+	}
+
+  a {
+		display: block;
+  }
+
+
+}
+
+.nav-horizontal{
+
+  li {
+    display: inline-block;
+		position: relative;
+	}
+
+  a {
+		display: block;
+  }
+
+  .sub {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    z-index: 1000;
+  }
+
+  li:hover .sub {
+    display: block;
+  }
+
+}
+
+@include desktop{
+  .nav-stack-mobile{
+    li {
+      display: inline-block;
+      position: relative;
+    }
+  
+    a {
+      display: block;
+    }
+  }
+}

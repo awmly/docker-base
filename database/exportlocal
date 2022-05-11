@@ -1,0 +1,8 @@
+#! /bin/bash
+
+TIMESTAMP=$( date +%s )
+
+/usr/bin/mysqldump --defaults-extra-file=/database/local.cnf -h $LOCAL_MYSQL_HOST --complete-insert --default-character-set=utf8 $LOCAL_MYSQL_DATABASE > /database/database.sql
+
+TOTAL=$( expr $( date +%s ) - $TIMESTAMP)
+echo "LOCAL DATABASE EXPORTED IN ${TOTAL} SECONDS"

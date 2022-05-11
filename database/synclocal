@@ -1,0 +1,7 @@
+#! /bin/bash
+
+# Load database in to staging server
+bash /database/exportproduction
+
+# Load database in to staging server
+bash /database/importlocal

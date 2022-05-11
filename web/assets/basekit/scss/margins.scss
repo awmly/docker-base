@@ -1,0 +1,201 @@
+/* ========================================================================
+ * STAN Utils: Margins/margins
+ * Author: Andrew Womersley
+ * ======================================================================== */
+
+ /** No Margins */
+ .no-mar{
+   margin:0 !important;
+ }
+ .no-mar-top{
+   margin-top:0 !important;
+ }
+ .no-mar-btm{
+   margin-bottom:0 !important;
+ }
+ .no-mar-left{
+   margin-left:0 !important;
+ }
+ .no-mar-right{
+   margin-right:0 !important;
+ }
+ .no-mar-hor{
+   margin-left:0 !important;
+   margin-right:0 !important;
+ }
+ .no-mar-ver{
+   margin-top:0 !important;
+   margin-bottom:0 !important;
+ }
+
+ /** Left And Right Margins */
+ .mar-left-xs{
+   margin-left:$xs;
+ }
+ .mar-right-xs{
+   margin-right:$xs;
+ }
+ .mar-hor-xs{
+   margin-left:$xs;
+   margin-right:$xs;
+ }
+ .mar-left-sm{
+   margin-left:$sm;
+ }
+ .mar-right-sm{
+   margin-right:$sm;
+ }
+ .mar-hor-sm{
+   margin-left:$sm;
+   margin-right:$sm;
+ }
+ .mar-left-md{
+   margin-left:$md;
+ }
+ .mar-right-md {
+   margin-right:$md;
+ }
+ .mar-hor-md{
+   margin-left:$md;
+   margin-right:$md;
+ }
+ .mar-left-lg{
+   margin-left:$lg;
+ }
+ .mar-right-lg{
+   margin-right:$lg;
+ }
+ .mar-hor-lg{
+   margin-left:$lg;
+   margin-right:$lg;
+ }
+ .mar-left-xl{
+   margin-left:$xl;
+ }
+ .mar-right-xl{
+   margin-right:$xl;
+ }
+ .mar-hor-xl{
+   margin-left:$xl;
+   margin-right:$xl;
+ }
+ .mar-left-xxl{
+   margin-left:$xl2;
+ }
+ .mar-right-xxl{
+   margin-right:$xl2;
+ }
+ .mar-hor-xxl{
+   margin-left:$xl2;
+   margin-right:$xl2;
+ }
+
+@mixin margin($device) {
+
+  /** Extra Small Margin */
+  .mar-xs{
+    margin:nth($xs_devices, $device);
+  }
+  .mar-top-xs{
+    margin-top:nth($xs_devices, $device);
+  }
+  .mar-btm-xs{
+    margin-bottom:nth($xs_devices, $device);
+  }
+  .mar-ver-xs{
+    margin-top:nth($xs_devices, $device);
+    margin-bottom:nth($xs_devices, $device);
+  }
+
+  /** Small Margin */
+  .mar-sm{
+    margin:nth($sm_devices, $device);
+  }
+  .mar-top-sm{
+    margin-top:nth($sm_devices, $device);
+  }
+  .mar-btm-sm{
+    margin-bottom:nth($sm_devices, $device);
+  }
+  .mar-ver-sm{
+    margin-top:nth($sm_devices, $device);
+    margin-bottom:nth($sm_devices, $device);
+  }
+
+  /** Medium Margin */
+  .mar-md{
+    margin:nth($md_devices, $device);
+  }
+  .mar-top-md{
+    margin-top:nth($md_devices, $device);
+  }
+  .mar-btm-md{
+    margin-bottom:nth($md_devices, $device);
+  }
+  .mar-ver-md{
+    margin-top:nth($md_devices, $device);
+    margin-bottom:nth($md_devices, $device);
+  }
+
+  /** Large Margin */
+  .mar-lg{
+    margin:nth($lg_devices, $device);
+  }
+  .mar-top-lg{
+    margin-top:nth($lg_devices, $device);
+  }
+  .mar-btm-lg{
+    margin-bottom:nth($lg_devices, $device);
+  }
+  .mar-ver-lg{
+    margin-top:nth($lg_devices, $device);
+    margin-bottom:nth($lg_devices, $device);
+  }
+
+  /** Extra Large Margin */
+  .mar-xl{
+    margin:nth($xl_devices, $device);
+  }
+  .mar-top-xl{
+    margin-top:nth($xl_devices, $device);
+  }
+  .mar-btm-xl{
+    margin-bottom:nth($xl_devices, $device);
+  }
+  .mar-ver-xl{
+    margin-top:nth($xl_devices, $device);
+    margin-bottom:nth($xl_devices, $device);
+  }
+
+  /** Extra Large Margin 2 */
+  /*  .mar-xxl{ */
+  /*    margin:nth($xl2_devices, $device); */
+  /*  } */
+  /*  .mar-top-xxl{ */
+  /*    margin-top:nth($xl2_devices, $device); */
+  /*  } */
+  /*  .mar-btm-xxl{ */
+  /*    margin-bottom:nth($xl2_devices, $device); */
+  /*  } */
+  /*  .mar-ver-xxl{ */
+  /*    margin-top:nth($xl2_devices, $device); */
+  /*    margin-bottom:nth($xl2_devices, $device); */
+  /*  } */
+
+}
+
+@include xs{
+  @include margin(1);
+}
+
+@include sm{
+  @include margin(2);
+}
+
+@include md{
+  @include margin(3);
+}
+
+@include lg{
+  @include margin(4);
+}

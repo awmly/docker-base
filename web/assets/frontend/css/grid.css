@@ -1,0 +1,7 @@
+.grd{
+    @apply grid grid-cols-12;
+}
+
+.align-center{
+    > article{ @apply col-span-2; }
+}

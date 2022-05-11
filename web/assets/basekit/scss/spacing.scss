@@ -1,0 +1,66 @@
+/* ========================================================================
+ * STAN Utils: Spaces/Divides
+ * Author: Andrew Womersley
+ * ======================================================================== */
+
+/** Space */
+.space,
+.space-xxs,
+.space-xs,
+.space-sm,
+.space-md,
+.space-lg,
+.space-xl,
+.space-xxl{
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+
+@mixin spacing($device) {
+
+  /*  .space-xxs{ */
+  /*    height:nth($xxs_devices, $device); */
+  /*  } */
+
+  .space-xs{
+    height:nth($xs_devices, $device);
+  }
+
+  .space-sm{
+    height:nth($sm_devices, $device);
+  }
+
+  .space-md{
+    height:nth($md_devices, $device);
+  }
+
+  .space-lg{
+    height:nth($lg_devices, $device);
+  }
+
+  .space-xl{
+    height:nth($xl_devices, $device);
+  }
+
+  /*  .space-xxl{ */
+  /*    height:nth($xl2_devices, $device); */
+  /*  } */
+
+}
+
+@include xs{
+  @include spacing(1);
+}
+
+@include sm{
+  @include spacing(2);
+}
+
+@include md{
+  @include spacing(3);
+}
+
+@include lg{
+  @include spacing(4);
+}

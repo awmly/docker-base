@@ -1,0 +1,9 @@
+#! /bin/bash
+
+TIMESTAMP=$( date +%s )
+
+## REMOVED FOR TESTING AS NO PRODUCTION DB CONFIGURED
+#/usr/bin/mysqldump --defaults-extra-file=/database/production.cnf -h $PRODUCTION_MYSQL_HOST --complete-insert --default-character-set=utf8 $PRODUCTION_MYSQL_DATABASE > /database/database.sql
+
+TOTAL=$( expr $( date +%s ) - $TIMESTAMP)
+echo "PRODUCTION DATABASE EXPORTED IN ${TOTAL} SECONDS"
